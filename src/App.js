@@ -21,9 +21,12 @@ class App extends React.Component {
   }
 
   deleteCard = index => {
-    const cards = this.state.cards.slice();
-    cards.splice(index, 1);
-    this.setState({cards});
+    if(this.state.cards.length > 1)
+    {
+      const cards = this.state.cards.slice();
+      cards.splice(index, 1);
+      this.setState({cards});
+    }
   }
 
   switchMode = () => {
@@ -45,7 +48,9 @@ class App extends React.Component {
     else
     {
       return (
-        <CardViewer switchMode = {this.switchMode} />
+        <CardViewer 
+          switchMode = {this.switchMode} 
+          cards = {this.state.cards}/>
       );
     }
  }
