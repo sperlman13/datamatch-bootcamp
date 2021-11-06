@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Link} from 'react-router-dom';
+
 class CardViewer extends React.Component {
     constructor(props)
     {
@@ -60,7 +62,7 @@ class CardViewer extends React.Component {
                 <button onClick={this.flipCard}>{this.showFlipText()}</button>
                 <button onClick={this.nextCard}>Go to next card</button>
                 <hr />
-                <button onClick = {this.props.switchMode}>Go to Card Editor</button>
+                <Link to="/editor">Go to Card Editor</Link>
             </div>
         )
     }
