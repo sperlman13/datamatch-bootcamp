@@ -2,7 +2,7 @@ import React from "react";
 import CardEditor from "./CardEditor";
 import CardViewer from "./CardViewer";
 
-import {Routes, Route} from "react-router-dom";
+import {Switch, Route} from "react-router-dom";
 import Homepage from "./Homepage";
 
 class App extends React.Component {
@@ -34,18 +34,21 @@ class App extends React.Component {
   render()
   {
     return (
-      <Routes>
-        <Route exact path = "/"
-          element = {<Homepage/>} />
-        <Route exact path = "/editor"
-          element = {<CardEditor 
+      <Switch>
+        <Route exact path = "/">
+          <Homepage/>
+        </Route>
+        <Route exact path = "/editor">
+          <CardEditor 
             addCard = {this.addCard} 
             deleteCard = {this.deleteCard} 
-            cards = {this.state.cards} />} />
-        <Route exact path = "/viewer"
-          element = {<CardViewer 
-            cards = {this.state.cards}/>} />
-      </Routes>
+            cards = {this.state.cards} />
+          </Route>
+        <Route exact path = "/viewer/:deckId">
+          <CardViewer 
+            cards = {this.state.cards}/>
+        </Route>
+      </Switch>
     );
  }
 }
